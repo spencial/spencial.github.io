@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[使用Shadowsocks在PAC模式下同步Anki]]></title>
+    <url>%2FEnglish-Learning%2F%20Use_Anki_through_Shadowsocks%2F</url>
+    <content type="text"><![CDATA[Anki作为一款手机端、电脑端同步背单词的利器，受到很多英语学习者的追捧。但是由于国内的某些原因，电脑端与服务器端的同步十分缓慢，有时经常出现无法同步的情况。大部分网上的教程都建议用户使用全局代理，但是在全局代理下访问国内网站又不是很流畅，而全局代理和pac模式的切换又需要手工操作，比较麻烦。 今天偶然在anki的官方手册上看到了关于代理的说明，看来开发者还是考虑到了广大中国用户的难言之隐。 大体翻译如下： Anki通过HTTPS同步，不支持通过PAC文件的高级代理模式。但是对于Windows或者OS X用户来说，Anki会自动检测系统变量HTTP_PROXY来使用代理的服务器，HTTP_PROXY的格式如下： 1http://user:pass@proxy.company.com:8080 如果用户字段有@字符(例如user@workdomain.com)则要将 @ 转换成 %40: 1http://user%40workdomain.com:pass@proxy.company.com:8080 也就是说在PAC模式下，Anki会直接连到同步服务器而不会通过Shadowsocks转发流量。由于Shadowsocks的默认端口在1080，且同时支持socks5和http代理，因此我们可以填上http://127.0.0.1:1080，即可指定Anki通过代理进行网络连接。 添加系统变量后，重启Anki，通过查看电脑连接发现，Anki.exe进程的网络连接都已经指向本机的1080端口，同步速度也是嗖嗖的。]]></content>
+      <categories>
+        <category>English Learning</category>
+      </categories>
+  </entry>
+</search>
